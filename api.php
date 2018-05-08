@@ -81,13 +81,13 @@ if(!function_exists("printDataGrid")) {
 			case "new":
 				loadModuleLib("forms","api");
 				printForm("new",$newForm,$dbKey,[],['gotolink'=>$glink,'reportlink'=>$glink]);
-				echo "<script>$(function() {initFormUI()});</script>";
+				//echo "<script>$(function() {initFormUI()});</script>";
 			break;
 			case "edit":
 				loadModuleLib("forms","api");
 				$where=['md5(id)'=>$slug['refid']];//"guid"=>$_SESSION['SESS_GUID']
 				printForm("edit",$editForm,$dbKey,$where,['gotolink'=>$glink,'reportlink'=>$glink]);
-				echo "<script>$(function() {initFormUI()});</script>";
+				//echo "<script>$(function() {initFormUI()});</script>";
 			break;
 		}
 		//printArray($slug);
