@@ -56,7 +56,14 @@ if(!function_exists("printDataGrid")) {
 									];
 					}
 				}
-				
+        
+        if(isset($_REQUEST['tmpl']) && strlen($_REQUEST['tmpl'])>0) {
+          $reportConfig['template']=$_REQUEST['tmpl'];
+        } elseif(isset($_COOKIE['RPTVIEW-'.$reportConfig['reportgkey']])) {
+          $reportConfig['template']=$_COOKIE['RPTVIEW-'.$reportConfig['reportgkey']];
+        }
+        //printArray($reportConfig);
+        
 				ob_start();
 				echo _css("reports");
 				echo "<div class='reportholder' style='width:100%;height:100%;'>";
