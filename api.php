@@ -13,8 +13,17 @@ if(!function_exists("printDataGrid")) {
 						"add_icon"=>"fa fa-plus",
 						"edit_icon"=>"fa fa-pencil",
 					];
+
 		if($params==null) $params=[];
 		$params=array_merge($defaultParams,$params);
+
+		if(isset($params['policy']) && strlen($params['policy'])>0) {
+			$allow=checkUserPolicy($params['policy']);
+			if(!$allow) {
+				trigger_logikserror("Sorry, you are not allowed to access this datagrid");
+				return false;
+			}
+		}
 		
 		$slug=_slug($params['slug']);
 		if(!$slug['type']) {
